@@ -11,11 +11,28 @@
   * no escopo de dias
 */
 
-
-
 const MS_POR_DIA = 1000 * 3600 * 24;
 
 const checarValidade = (data, vencimento) => {
+  vencimento = gerirNumeroESufixo(vencimento);
+
+  const estaVencido = calcularVencimento(data, vencimento);
+  return estaVencido;
+
+}
+
+console.log(`
+  Teste 1: ${checarValidade("2022, 1, 1", "25d")}
+  Teste 2: ${checarValidade("2021-11-17T20:40:09.503Z", "10d")}
+  Teste 3: ${checarValidade("2021-12-10T00:00:00.000Z", "180d")}
+`);
+
+
+
+
+// Funções específicas
+
+function gerirNumeroESufixo(vencimento) {
   const sufixoTemporal = vencimento.length - 1;
   const vencimentoEm = vencimento[sufixoTemporal];
   const sufixos = ["d", "s", "m", "a"];
@@ -47,17 +64,15 @@ const checarValidade = (data, vencimento) => {
       vencimento = Number(vencimento);
   }
 
+  return vencimento;
+}
+
+function calcularVencimento(data, vencimento) {
   const fabricadoEm = new Date(data);
   const dataAtual = new Date();
 
   const diferencaEmDias = Math.round((dataAtual - fabricadoEm) / MS_POR_DIA);
   const estaVencido = vencimento - diferencaEmDias < 0;
   
-  console.log(estaVencido); 
-
+  return estaVencido;
 }
-
-// checarValidade("2022, 1, 1", "17d");
-
-checarValidade("2021-11-17T20:40:09.503Z", "10d");
-checarValidade("2021-12-10T00:00:00.000Z", "180d");
