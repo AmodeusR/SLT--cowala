@@ -1,0 +1,180 @@
+:root {
+  --primary-clr: #0A1633;
+  --accent-clr: #00d9d0;
+
+  --dark-clr: #3e4046;
+  --background: #e2e4e9;
+
+  --form-boder-radius: .7rem 2.5rem .7rem .7rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: var(--background);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: min(90%, 50rem);
+  margin-inline: auto;
+}
+
+/* Estilos do Header */
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-clr);
+  padding: 1rem 0;
+}
+
+.text-logo {
+  transform: scale(.85);
+}
+
+/* Estilos da sessão principal / Form */
+
+.main {
+  min-height: 80vh;
+  display: flex;
+  place-items: center;
+}
+
+.form-title {
+  align-self: center;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.ip-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #fff;
+  padding: 2rem;
+  max-width: 40rem;
+
+  box-shadow: 0px 2px 15px 3px hsl(0 0% 50% / .15);
+  border-radius: var(--form-boder-radius);
+}
+
+.ip-form::before {
+  position: absolute;
+  content: "";
+  inset: 0;
+  transform: translate(-5px, 5px);
+  background: var(--accent-clr);
+  border-radius: var(--form-boder-radius);
+  z-index: -1;
+}
+
+/* Estilização dos Inputs */
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.input-row > * {
+  flex-grow: 1;
+}
+
+.input label {
+  color: var(--dark-clr);
+  font-weight: bolder;
+}
+
+.input-field {
+  font-size: .9rem;
+  padding: .7rem .4rem;
+  border: none;
+  border: 1px solid hsl(228 6% 50% / .5);
+
+  border-radius: .3rem;
+}
+
+.input-field:focus {
+  outline: 2px solid var(--accent-clr);
+  outline-offset: -2px;
+}
+
+.ip-field {
+  align-items: flex-end;
+}
+
+/* Estilização dos botões */
+
+.ip-button {
+  position: relative;
+  border: none;
+  color: var(--dark-clr);
+  background: var(--accent-clr);
+  padding: .6em .5em;
+
+  font-weight: bolder;
+  font-size: 1rem;
+  border-radius: .3rem;
+  border-bottom: 3px inset hsl(178 90% 33% / .5);
+  transition:
+    background 200ms ease,
+    border 200ms ease;
+}
+
+.ip-button:hover {
+  background: hsl(178, 85%, 53%);
+  border-bottom: 5px inset hsl(178 100% 33% / .5);
+  cursor: pointer;
+}
+
+.ip-button:active {
+  border-bottom: 0 inset hsl(178 100% 33% / .5);
+  background: hsl(178 90% 43%);
+
+}
+
+.buttons {
+  justify-content: center;
+}
+.buttons > button {
+  font-size: 1rem;
+  font-weight: bolder;
+  padding: 1em 1.5em;
+  border: none;
+  background: hsl(222, 40%, 25%);
+  color: #fff;
+  transition: background 150ms ease;
+}
+
+.buttons > button:hover {
+  background: hsl(222, 65%, 40%);
+  cursor: pointer;
+}
+
+.buttons > button:active {
+  background: hsl(222, 50%, 20%);
+}
