@@ -10,21 +10,46 @@ const Input = ({inputLabel, inputNumber, inputInfo, inputValue, setInputValue, r
     }
 
     if (inputNumber === "phone-number" && isInputFocused) {
-      handlePhoneNumber(value);
-      const formattedNumber = [];
-
-      if (value >= 11) {
-        setInputValue(value.slice(0, 11));
-        formatNumber(value);
-      }
+      handlePhoneNumber(value);       
     }
 
   }
-
+  
   const handlePhoneNumber = value => {
-    console.log(value);
-    setInputValue(value);
+    if (value.length === 11) {
+      const formattedPhoneNumber = formatNumber(value);
+      setInputValue(formattedPhoneNumber);
+
+    } else if (value.length === 14) {
+      const onlyNumbers = value.replace(/\D/g, "");
+      setInputValue(onlyNumbers);
+
+    } else if (value.length >= 15) {
+      const maxNumber = value.slice(0, 15);
+      setInputValue(maxNumber);
+
+    } else {
+      setInputValue(value);
+    }
   }
+
+  const formatNumber = phoneNumber => {
+    const indexes = [0, 3, 4, 10];
+    const formattedNumber = [];
+
+    phoneNumber.split("").forEach((number, i) => {
+      if (i === 0 || i === 2) {
+        formattedNumber.includes("(") ? formattedNumber.push(")", " ") : formattedNumber.push("(");
+      } else if (i === 7) {
+        formattedNumber.push("-");
+      }
+
+      formattedNumber.push(number);
+
+    });
+    return formattedNumber.join("");
+  }
+
 
   return (
     <div className="input">
