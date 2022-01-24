@@ -159,6 +159,7 @@ img {
 
 .buttons {
   justify-content: center;
+  margin-top: 1.5rem;
 }
 .buttons > button {
   font-size: 1rem;
@@ -170,11 +171,28 @@ img {
   transition: background 150ms ease;
 }
 
-.buttons > button:hover {
-  background: hsl(222, 65%, 40%);
+.buttons > button:nth-child(1) {
+  background: hsl(348, 83%, 47%);
+}
+
+.buttons > button:nth-child(1):hover {
+  background: hsl(348, 88%, 56%);
   cursor: pointer;
 }
 
-.buttons > button:active {
-  background: hsl(222, 50%, 20%);
+.buttons > button:nth-child(1):active {
+  background: hsl(348, 80%, 40%);
+}
+
+.buttons > button:nth-child(2) {
+  background: hsl(120, 61%, 45%);
+}
+
+.buttons > button:nth-child(2):hover {
+  background: hsl(120, 65%, 55%);
+  cursor: pointer;
+}
+
+.buttons > button:nth-child(2):active {
+  background: hsl(120, 55%, 40%);
 }
